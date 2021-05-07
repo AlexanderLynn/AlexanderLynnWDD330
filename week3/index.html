@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 3 Notes</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h3>Questions for this section:</h3>
+    <ul>
+        <li>Can objects nest in Javascript?</li>
+        <li>Can default parameters be accepted and overridden in Javascript methods?</li>
+        <li>What si the most efficient way to write event handlers?</li>
+        <li>What is the most efficient way to modify the DOM?</li>
+    </ul>
+    <h2>Javascript Objects</h2>
+    <p>Javascript is an object oriented langauge. Programming with objects is also known as OOP or<br>
+    object oriented programming.<br>
+    Objects are defined to represent entities. These entities can not only have name:value pair properties<br>
+    assigned to them, but also methods. These methods are functions callable wihin the object. This is most<br>
+    often seen in the format of <i>objectName.method();</i> </p>
+    <p>Inside of these methods, there is a special keyword that can be used to refer to the current object<br>
+    in run-time. Often the <i>this</i> takes the place of the object which is calling the method (The<br>
+    exception is with arrow functions which simply refer back to the outer context or container that<br>
+    called the arrow function). Using the <i>this</i> keyword can be very powerful for increasing re-<br>
+    usability of your code.</p>
+    <p>To help clean up code and ensure that variable names do not overlap and possibly overrite eachother,<br>
+    we can defines namespaces with an object literal pattern. This means creating a const objects and placing<br>
+    functions and variables specific to that program within the object. The functions or variables would then<br>
+    need to be preceeded by the object literals name to be invoked. One popular way is to create JSON files.</p>
+    <p>JSON or Javascript Object Notation is used as a lightweight way to store data. In fact, Javascript even<br>
+    has methods built-in to handle the reading and writing of these objects. The <i>parse()</i> method will<br>
+    read a string and create a Javascript Object. The <i>stringify()</i> method does the opposite. It turns a<br>
+    Javascript object into a string. Note; <i>stringify()</i> ignores methods within the object.</p>
+    <p>Javascript also features the usage of constructors for objects. These are useful for creating an object<br>
+    with predetermined methods and variables, some even populated by default until overridden. For example, <br>
+    if you have a list of cars, you could create a constructor for the object type of <i>car</i> and during the<br>
+    creation or afterwards, populate the attributres of say, color, horsepower and weight. These could be used<br>
+    with a method int hat object type to determine the max speed of the vehicle. (Red is +2 max speed for instance)</p>
+    <h2>The Document Object Model</h2>
+    <p>The Document Object Model or DOM is a heirarchical way of showing the relationship between elements in<br>
+    an HTML document. This page is almost fully mutable during runtime and post load of the page via scripting.<br>
+    The most common ways of sleecting these document objects, which correspond to the HTML tags is by looking up<br>
+    their id, class name, tag name, or through a query selector, the later using CSS notation for DOM selection.</p>
+    <p>Query selectors are very powerful in the way that you can refine more indepthly your DOM selection as opposed<br>
+    to a simple tag or id. For example, the statement <i>const hero2 = document.querySelector("ul#roster:nth-child(2)");</i><br>
+    would select the 2nd child of the unordered list who's class is "roster"</p>
+    <p>Many powerful methods are built into navigating the DOM such as <i>.parent</i>, <i>.firstChild</i>, or <i>.nextSibling</i>
+    </p>
+    <p>Methods for interacting and changing element attributes and properties as well as adding and removing<br>
+    elements are also baked into Javascript. This including re-ordering of elements and updating CSS properties<br>
+    in code during run-time as well.</p>
+    <h2>Javascript Events</h2>
+    <p>Some of the most basic and powerful events within Javascript are event listeners. Event listeners can be<br>
+    added onto HTML elements for things such as clicks, load, mouseover, and many more. When the event listener<br>
+    is triggered, the callback function is called. Not only mouse events but keyboard and touch events can be<br>
+    registered. This gives us a way to even further get code out of or HTML documents and into Javascript files.<br>
+    In the same way that attributes can be added or removed in the DOM using Javascript, so can event listeners.<br>
+    Event listeners can even be used to stop or prevent default behavior.</p>
+    <p>One of the most important concepts to understand when using event listeners is understanding how the event<br>
+    is propagated. There are two ways they do so: bubbling and capturing.<br>
+    The default behavior is bubbling. This means that when an event is registered, the same event will be<br>
+    propagated to all parent elements. For example, if you click on an <i>&lt;li&gt;</i> element, the ul, body,<br>
+    and html elements will all also register the event. The propagation can be stopped by including the<i>.stopPropagation();</i><br>
+    method within the event being handled.</i></p>
+</body>
+</html>
