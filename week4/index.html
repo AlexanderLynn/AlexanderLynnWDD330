@@ -9,6 +9,7 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
+        p { text-indent: 25px; }
     </style>
 </head>
 <body>
@@ -45,6 +46,35 @@
     <p>With the introduction of ES6, Javascripts OOP abiltiies got a big upgrade. One of the first ways is through consturctors.<br>
     Prior to ES6, object literal notation was the best way to create objects in Javascript. Now we can use constructors along<br>
     with the <i>this</i> keyword. We can also use the <i>new</i> operator to instantiate a instance of an object, similar to Java<br>
-    or C#.</p>
+    or C#. Javascript classes also support prototypal inheritance. This means that all instances of a class created have access to<br>
+    the methods of the prototypes origin class. This does not mean, however, that the methods or properties cannot be overridden.</p>
+    <p>While many things are similar, some are different. For instance, what is known as a class method in other C-syntax languages<br>
+    is written just as a static method. This means that the method can be called by referencing the class name rather than the name<br>
+    of the instance. Prototypes in Javascript also update retro-actively. Meaning if the original prototype class is updated,<br>
+    with a new method, for example, all previously instantiated objects also receive the updated prototype. Javascript also handles<br>
+    private and public methods and variable a little differently. There is now public or private keyword to preface objects or<br>
+    classes with. Instead, Javascript relies upon setting these properties to a limited scope and using getter and setter methods<br>
+    to assist in reading and writing data within the object.</p>
+    <p>Some interesting ways that Javascript objects are processed include the <i>propertyIsEnumerable();</i> method, which checks<br>
+    to see if a method will be counted in a for-in loop, the extends keyword, causing a new class to inherit from the class being<br>
+    extended, not unique in usage nor syntax particularly to Javascript, and polymorphism. Polymorphism means objects can have the<br>
+    same method names, but handle them completely differently. Like the <i>toString()</i> method outputs a single number for an<br>
+    integer, yet with arrays it separates the values with commas in the output. These default methods can also be overridden by<br>
+    creating another method within the class or object.</p>
+    <p>To take polymorphism even further, methods can even be added to built-in objects of Javascript. For example, we could create<br>
+    a method <i>isPrime()</i> and attach it to the number prototype. The line would read something like this:<br>
+    <i>Number.prototype.isPrime() = function() { return for(var i = 2; i < this; i++) if(this % i === 0) return false; return this > 1;</i><br>
+    Now when we write say <i>41..isPrime()</i> we will be returned a boolean true or false with the answer. This is known as<br>
+    monkey-patching and is generally frowned upon in Javascript. In other lanagues however, it isn't bad at all or even positive.<br>
+    To avoid modifiying built-in object, you could even create a new form of say an array called <i>betterArray</i> and have it extend<br>
+    the <i>Array</i> built-in object.</p>
+    <p>A mixin is a powerful way of manipulating and combining objects and methods in Javascript. With a mixin, we can combine<br>
+    multiple objects together into a new object. For example, if we had a class of a superhero and the class of a alien, they both<br>
+    do not have the same prototypes. But if we want to combine both fo these methods to make a super alien, someone who has all of<br>
+    the methods as a superhuman, but also has alien characteristics, it can be done!</p>
+    <p>Javascript's ES6 update also gave us the arrow function, extremely similar to a lambda or anonymous functions. With these<br>
+    functions, it is unnecessary to declare a function name, simply the parameters being passed in. Another useful specification of<br>
+    arrow functions in Javascript is that they do not decrease in scope, meaning any <i>this</i> reference refers to the originating<br>
+    object.</p>
 </body>
 </html>
