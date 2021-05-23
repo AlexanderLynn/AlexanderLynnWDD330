@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 4 Notes</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        p { text-indent: 25px; }
+    </style>
+</head>
+<body>
+    <h3>Questions</h3>
+        <ul>
+            <li>What are common Javascript and HTML linters?</li>
+            <li>What common exceptions exist in Javascript?</li>
+            <li>What common debugging methods are tried first when programs fail to run?</li>
+        </ul>
+        <h2>Errors, Exceptions, Warnings</h2>
+        <p>Errors are normally caused by one or more of 3 things: System error, the actual system that the program<br>
+        is interacting with failed, a Programmer error, meanign faulty logic or syntax was created and tried to be<br>
+        executed, or User error, meaning data was entered incorrectly aor unhandlable by the executing program. It is<br>
+        a best practice to limit what data can be input into our systems or causing the entry to conform as it is hard to<br>
+        control external systems.</p>
+        <p>An exception can also be thrown when executing code. These are caused by a variable or function that cannot<br>
+        be returned. Thankfully with most exceptions in Javascript, stack tracing is available. This is the way Javascript<br>
+        can trace back where an exception or error may have originated. A list of the entire execution or is dislayed<br>
+        along with the line and sometimes column of the issue.</p>
+        <p>Warning displayed in Javascript do not stop the execution of the code. While this could be good for allowing<br>
+        the remaining code to continue to function, this could be problematic was it is not always very evident when these<br>
+        warnings occur and the terminal is not open.</p>
+        <h2>Debugging and Console Tools</h2>
+        <p>Due to the constant flux of api support between Javascript, CSS, and HTML, Javascript natively support a feature<br>
+        called Feature Detection. This is used to check to see if the current version of Javascript being ran by the browser<br>
+        supports the api trying to be called. Implementing this can help reduce errors of the entire Javascript ceasing to<br>
+        run. The program simply skips the method or contained code if the api isn't present.</p>
+        <p>All modern browsers contain at least a basic set of debugging software. This allows us to set breakpoints within<br>
+        the codes execution. One handy way to do this is with the <i>alert()</i> method. When called, it behaves similarly<br>
+        to the <i>console.log()</i> method in that is pushes a string or variables value to the console, but it also pauses<br>
+        the execution of the code and allows for debugging. While inside of this console the command <i>console.trace()</i> can<br>
+        also be used to provide an interactive stack track, as earlier mentioned. THis can aid in the debugging process or more<br>
+        complex solutions.</p>
+        <p>An <i>Error</i> is a default object type in Javacript. It can be passed in a custom response or console dialog<br>
+        With using a custom error object, we are able to combine it with the <i>throw</i> statement to aid in our debugging.<br>
+        When the throw statement is executed it stops all execution of Javascript code and displays the error using the object<br>
+        previously created. The program then is terminated. Also helpful when debugging and working with throw statements are<br>
+        the keywords <i>try, catch,</i>, and <i>finally</i>. These statements can be used to test code and try running more<br>
+        code instead of simply ending the execution.</p>
+        <h2>Testing</h2>
+        <p>In all programming lanagues, not just Javascript, it is important to test code. It is even possible to create methods<br>
+        for running simulations of what inputs would be expected. Using this kind of development is know as TDD or Test Driven<br>
+        Development. Within the TDD methods there are 5 steps:</p>
+        <ol>
+            <li>Write tests (that initially fail)</li>
+            <li>Write code to pass the tests</li>
+            <li>Refactor the code</li>
+            <li>Test refactored code</li>
+            <li>Write more tests for new features</li>
+        </ol>
+</body>
+</html>
