@@ -31,6 +31,7 @@ span {
     border-radius: 5px;
     color: white;
     padding: .1rem .6rem;
+    float: right;
 }
 section {
     max-width: 500px;

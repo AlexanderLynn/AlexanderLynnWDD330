@@ -61,6 +61,8 @@ function refresh(firstTime) {
       tempList[i].style.display = "none";
   }
 }
+
+//Toggle handler for view filtering
 function toggleAll() {
   all = true;
   active = false;
@@ -79,22 +81,27 @@ function toggleCompleted() {
   completed = true;
   refresh();
 }
+//-------------------
 
 //Make Item Function
 const makeItem = (item) => {
   const li = document.createElement("li");
   li.textContent = item.content;
+  const span = document.createElement("span");
+  span.textContent = "X";
   ul.appendChild(li);
+  li.appendChild(span);
   if (item.completed == true)
     li.classList.add("checked");
   else
     li.classList.remove("checked");
+    
 }
 
 //Complete Item Event Listener
 document.getElementById("todo-list").addEventListener("click", function(e) {
   for(i = 0; i < itemsList.length; i++){
-  if (itemsList[i].content == e.target.innerHTML)
+  if (itemsList[i].content == (e.target.innerHTML.substring(0, e.target.innerHTML.indexOf("<"))))
     if (itemsList[i].completed == false)
       itemsList[i].completed = true;
     else
@@ -102,6 +109,19 @@ document.getElementById("todo-list").addEventListener("click", function(e) {
   }
   refresh();
 });
+
+//Item Deleter
+document.getElementById("todo-list").addEventListener("click", function(e) {
+  if (e.target.innerHTML == "X")
+  {
+    for(i = 0; i < itemsList.length; i++){
+      console.log(itemsList[i].content);
+      
+    }
+  }
+});
+
+
 
 //Clear Data Test Button
 function clearData() {
