@@ -22,6 +22,10 @@ const links = [
     {
       label: "Week 6 Project: Todo",
       url: "week6/week6_test/index.html"
+    },
+    {
+      label: "Week 7 Notes",
+      url: "week7/index.html"
     }
   ]
 function listPages() {

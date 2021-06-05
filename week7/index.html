@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 7 Notes</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        p { text-indent: 25px; }
+    </style>
+</head>
+<body>
+    <h3>Questions</h3>
+    <ul>
+        <li>How do call backs <i>really</i> work?</li>
+        <li>What are IIFEs?</li>
+        <li>What is AJAX and what are it used for?</li>
+        <li>Is AJAX useful in large scale production?</li>
+    </ul>
+    <h2>Function Properties, Scope, and IIFEs</h2>
+    <p>
+        Javascript has a few built in functions for modifiying functions. One of them is the <i>call()</i><br>
+        method. By using this method, a variable can be passed in to override what <i>this</i> would normally<br>
+        be. The method <i>apply()</i> is used in a similar way but is used to supply an array if, per say, the function<br>
+        normally only takes one parameter.
+    </p>
+    <p>
+        Custom properties cna be created and given to to functions within javascript. Simply state a property name<br>
+        when referencing a function name. Should a function take a long time to compute, it is even possible to store<br>
+        the output in memory. This woul be useful to help reduce the amount of compute time need by the system. It is<br>
+        stored within an object created for function of type <i>cache</i>.
+    </p>
+    <p>
+        Along with custom properties, functions can also re-write themselves. For example, if during a functions call it<br>
+        sets itself to something complete different, this can be done! This would be fantastic for code requiring a<br>
+        usage of certain methods during the first initialization, but would need to be written out afterwards.
+    </p>
+    <p>
+        One fantastic way to separate out cope of variables and function is by using IIFEs. By wrapping a function in<br>
+        parenthesis, it will be executed immediately upon load within the code. Because ti is ran immediately upon run<br>
+        and wrapped by parenthesis, it is almost like a temporary function. Everything within it is used one, and that is<br>
+        the end of their lifetime. All variables created there end and are disposed of on completion of the function.<br>
+    </p>
+    <h2>Functions Calling Themselves and Others, Promises</h2>
+    <p>
+        Recursive functions can be extremely useful in some situations. It allows the programmer to reduce the amount<br>
+        of code written by the use of clever logic. For exmaple, find the factorial of a number. You multiple the number<br>
+        by itself -1, and continue until reaching 0. It is the multiplication of all numbers lesser thant he starting<br>
+        until reaching 0. 
+    </p>
+    <p>
+        Javascript alo support the use of callbacks. Callbacks allow for a function to be invoked within a function,<br>
+        all while not pausing the current code to do so. Since Javascript has a single thread nature to it, the function<br>
+        in the call bak is simply added to the end of the currently executing block. This allows the function to continue<br>
+        as normal and compute the final value when next possible.
+    </p>
+    <p>
+        While callbacks are extremely powerful in Javascript, they can become quite tedious and complicated to work with<br>
+        in their self. In comes the <i>Promise</i>. A promise provided a way to handling whether a callback was successful<br>
+        or not. When certain conditions are met at the end of the callback, the promise responds by calling either the success<br>
+        function or the failure. With the introduction of ES2017, the ability was added to run asynchronous functions in a<br>
+        synchronous manner. This is done by prefacing the originating function with the keyword <i>sync</i>.
+    </p>
+    <h2>Closures</h2>
+    <p>
+    Normally when a variable is declared within a block of code, it has access to variables within itself and the originating<br>
+    code block. Should that block of code, a function maybe, finish, the variables within are disolved. The other function<br>
+    does not have access. With closures, we can maintain access to inner variables.
+    </p>
+    <p>
+        This is possible by returning the called function by another function. To be able to return something, it must have<br>
+        access to it. By returning the function, it maintains access.
+    </p>
+    <h2>Functional Programming</h2>
+    <p>
+        Among many programming paradigms such as OOP and procedural programming is functional programming. The basis of functional<br>
+        programming is that all of the code is non-destructive. Meaning that all data is manipulated for the output, but not<br>
+        changed. THis allows for greater flexibility and reusability. Code is built upon eachother with functions and modules<br>
+        for maximizing reusability.
+    </p>
+    <h2>Ajax</h2>
+    <p>
+        While Javascript was built to be a primarily frontend languages, the introduction of Ajax allowed it to more fully<br>
+        interact with servers via requests. With Ajax, the DOM can be updated with data from a server, pages can be partially<br>
+        reloaded rather than requiring an entire repaint. This is mostly done through APIs in Ajax, namely <i>fetch</i>.
+    </p>
+    <p>
+        The most basic usage of the fetch api is the <i>fetch()</i> method, requiring only a url. It return a promise that<br>
+        can be handled with two more statements: the <i>.then( // code that handles the response )</i> and <i>.catch( // code that runs if the server returns an error )</i>.<br>
+        The responses from the fetch api can be handled in many ways. Text responses can be accessed using the <i>.text()</i><br>
+        method. Files can also be received by using the <i>.blob()</i> method. This emthod returns the data as a blob object. The<br>
+        <i>type</i> property cna then be used to determine what type of file was received.
+    </p>
+    <p>
+        The most common response typically received when working with Javascript is most likely a JSON. This response is then resolved<br>
+        as a Javascript object that an be manipulated. All of these types of responses have the headers interface available to them.<br>
+        Within the header interface data like content type, encoding and charsets can be read. 
+    </p>
+    <p>
+        Ajax can also be used to send information. When sending data it is most common to stringify a Javascript object into a<br>
+        JSON string. This can then be sent with a new request, this time marking the method as <i>POST</i> instead of <i>GET</i>. We<br>
+        will still use the <i>fetch()</i> method to push the data, because because the value or the method in our response object<br>
+        is set to post, it will send rather than receive. Because oft he wide implemenation of Ajax in all modern browsers, many<br>
+        libraries have already been expanded to include it. Name jQuery has a custom method call <i>ajax()</i> that functions<br>
+        similarily to the fetch api, but is simplified.
+    </p>
+</body>
+</html>
