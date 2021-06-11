@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 8 Notes</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        p { text-indent: 25px; }
+    </style>
+</head>
+<body>
+    <h3>Questions</h3>
+    <ul>
+        <li>What are the most common transformation and animations?</li>
+        <li>What is browser support like?</li>
+        <li>What is the most efficient way of animating? (Redraws and reloads etc)</li>
+        <li>How does the canvas element define its grid?</li>
+    </ul>
+    <h2>Enter JS-less Transformation</h2>
+    <p>
+        Within CSS3, we are given the <i>transform</i> function. Through this we can manipulate elements in html in both<br>
+        the 2-D and 3-D space. The transform method has several properties including: translate, scale, position, skew, and more.<br>
+        As a note, transform methods do not work on inline elements. They must be at minimum <i>inline-block</i> displayed.<br>
+        When using methods such as translate or scale, they are given in <i>(x,y)</i> notation, or horizontal and vertical effecting.<br>
+        To and multiple transform functions, simply add them spaced out under the first property of the selector. Transforms also do<br>
+        not cause inline-block elements to reflow around the changed object. They object that is transformed will simply scale and<br>
+        overlap the other elements.
+    </p>
+    <p>
+        Some transform methods do not work in <i>(x, y)</i> format, but rather take other input. The <i>rotate()</i> method for instance<br>
+        takes an integer and rotates the element clockwise (or counterclockwise if negative). Other functions take even more great parameters.<br>
+        the <i>transform-origion</i> method for instance offsets the center of the other transforms. This is dependent upon the order in<br>
+        which the transforms are applied, however. If a rotation, for instance, happens before a translation, the element will eb translated<br>
+        upon the new axis.
+    </p>
+    <p>
+        Thankfully, all modern browsers uspport native CSS transitions. These are much more client side friendly with processing and often<br>
+        look smoother as well. Here are the steps for creating simple CSS transitions:
+    </p>
+    <ol>
+        <li>Declare the original state of the element in the default style declaration.</li>
+        <li>Declare the final state of your transitioned element; for example, a :hover state.</li>
+        <li>Include the transition functions in your default style declaration using the transition properties, including:<br>
+            transition-property , transition-duration , transition-timing-function , and transition-delay . We’ll look at each of these <br>
+            and how they work shortly.</li>
+    </ol>
+    <p>
+        Transitions can also be controlled with time. The <i>transition-duration</i> property defines how long the transition will take to<br>
+        go between defined states. Timing functions also have key terms like <i>ease, linear, ease-in, and ease-out</i> This can be defined<br>
+        either with seconds or milliseconds. Transitions can also be written in shorthand as<i>transition: transition-property, transitiond-duration,<br>
+        transition-timing-function, transition-delay;</i>In the case of older browsers not supporting the transition or timing, a hard shift to the<br>
+        new trigger state will occur instead.
+    </p>
+    <p>
+        Multiple transition at the same time are also possible. Within the <i>transition-property</i> method, each transition type is comma separated.<br>
+        When transitions have finished the <i>transitionend</i> event is thrown upon completion in both direction. It is fired once per both<br>
+        directions of the transition.
+    </p>
+    <h2>Animations</h2>
+    <p>
+        CSS animations are a great alternative to CPU intensive Javascript animations. Animations in CSS are built upon keyframes. These<br>
+        keyframes are steps or waypoints within an animations life. These keyframes are references with the prefix <i>@keyframes</i> and contains<br>
+        the items within curly braces. Animations also have timing functions similar to transitions. It is written as<i>animation-timing-function</i><br>
+        Animations also have an <i>animation-iteration-count</i> property to determine how many times the animation will be looped. Animations<br>
+        can also be reversed, starting from the 100% keyframe, or delayed, starting milliseconds or second after being called.
+    </p>
+    <p>
+        Animations also have a property called <i>animation-fill-mode</i> which causes the animations to stop and hold the final frame of<br>
+        animation, or continue to the original state before animation.
+    </p>
+    <h2>The HTML Canvas</h2>
+    <p>
+        Canvas was introduced by Apple. It allows you to modify the individual pixels within the bounds of the canvas. Anything can be drawn<br>
+        within the rasterized environment without the need for downloading many large images from the web. Canvas elements must have the<br>
+        height and wdith attributes set on the elements itself. If set in CSS, only the box containing the canvas will be set, the viewport,<br>
+        if you will, and not the actual working coordinate system size.
+    </p>
+    <p>
+        To first reference the Canvas, an object must be returned. This can be done, as an example, by setting a variable equal to the reference.<br>
+        <i>var canvas = document.getElementById("myCanvas"); var context = canvas.getContext("2d");</i> After referencing the canvas, we can<br>
+        then fill our "brush" with color. The <i>context</i> object is referenced and the property <i>.strokeStyle</i> and <i>.fillStyle</i><br>
+        are used to change the border and fill of the shape.
+    </p>
+    <p>
+        The canvas system is defined with the top left corner being (0,0) and the bottom right corner being the highest dimensions of the<br>
+        canvas. Patterns can also be defined within Javascript to fill the defined boundaries in the canvas with shapes or images. Creating<br>
+        more advanced shapes, however is a bit more tricky. They are created with paths.
+    </p>
+    <p>
+        Videos within the canvas element are also a little tricky. The canvas can be referenced in the same manner as with a static image<br>
+        but can have an event listener added to be triggered on "play". The event listener then executes a defined function. We can then<br>
+        edit the canvas as displayed by the frame by passing in variables to reference the video on the canvas. The canvas is treated as<br>
+        an array each with the data contained within <i>pixelData</i> being the displayed RGB color values.
+    </p>
+    <h2>SVG and XML</h2>
+    <p>
+        SVGs are created within the XML format, a markup language similar in syntax to html. It used opening and closing tags to define<br>
+        elements. SVGs hav several predefined tags within the <i>svg</i> tag. Circle, and rect for example are fairy self explanatory.<br>
+        Within the elements inside of an SVG attributes are defined. <i>cx</i> and <i>cy</i> for example defined the center x and y coordinates<br>
+        of the SVG. The fill and stroke can be modified along with the stroke width. SVGs were covered more previously.
+    </p>
+    <p>
+        The main difference between SVGs and the canvas element is the canvas is drawn immediately, and cannot be accessed in the DOM<br>
+        SVGs operate in retained mode, meaning the are able to be manipulated in the DOM and retained for use even while not displayed.<br>
+        SVGs are most resource intensive and slower to load however, but do not blur with increased zooming as they are not rasterized.<br>
+    </p>
+    <p>
+        One more fun attribute that can be added to elements it the <i>draggable</i> property. Separate data transfer objects can be<br>
+        defiend to accept data dropped on it. The data types can be (and need to be) defined as simple plain text or more complex file<br>
+        types. Eventlisteners can be defined to handle the events including dragover and drop.
+    </p>
+</body>
+</html>
