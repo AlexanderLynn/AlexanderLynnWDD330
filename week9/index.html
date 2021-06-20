@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 8 Notes</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            max-width: 1400px;
+        }
+        p { text-indent: 25px; }
+    </style>
+</head>
+<body>
+    <h3>Questions</h3>
+    <ul>
+        <li>What are the most appropriate use cases for the window object?</li>
+        <li>How does the browser object relate to the document object?</li>
+        <li>What can be stored in "data" attributes of an HTML element?</li>
+        <li>Are there built in APIs for interfacing with the OS or displaying notitifcations outside<br>
+        the browser?</li>
+        <li>What is a websocket?</li>
+    </ul>
+    <h2>What is the browser object?</h2>
+    <p>
+        The browser object model or <i>BOM</i> is a collection of properties and methods containing information abou the browser and computer screen. 
+        Everytime a new browser window, tab, popup, frame, or iframe is created, it has a window object. This object is global in scope and can be accessed 
+        from any part of the program. All globally created variables are references through the window object, although it is not necessary to reference 
+        them as such.
+    </p>
+    <p>
+        The window object also has several built in dialog boxes. When executed, these stop the execution of the program until dismissed. In the case of 
+        an alert, an alert opoup is displayed and returns <i>undefined</i>. When using the <i>window.confirm()</i> method, the popup return true for ok, 
+        and false for cancel. With the <i>prompt()</i> method, the value entered is returned, or if canceled, a null value.
+    </p>
+    <h2>Gathering client information from the browser object.</h2>
+    <p>
+        Within the window object, the <i>navigator</i> object returns information about a users browser and operating system. This could be useful for 
+        displaying browser or machine specific content. The location property can be read or written to. When being written to, the browser will refresh 
+        and navigate the the newly supplied browser. This make for a simple and easy reroute to say, a newly updated website from the old address. 
+        The location object can even determine what the current protocol being used to connect to the website is and what the domain of the site is. The 
+        <i>pathname</i> property will return the file path of the webpage in the current domain.
+    </p>
+    <p>
+        The window object can even access data from outside of the currently active webpage. With the <i>history</i> property, the browser can navigate to 
+        the previous webpage, or the next. This includes opening them in a new window entirely with the <i>open()</i> method of the window object. 
+    </p>
+    <p>
+        Here is where the document object comes in to play. The document object is located within the window object. More specifically, this allows for 
+        accessing the more familiar document object model. Here we can read and write and we have previously practiced.
+    </p>
+    <p>
+        The document object also has some local storage capabilities, namely through cookies. Cookies are restricted to only 4KB in size, but 20 cookies 
+        are allowed per domain. These are very useful for customizing the user's experience from saved preferences, recently navigated websites,a and more. 
+        These cookies are made up of a text file containing simple name value pairs. Cookies can be created by using the <i>cookie</i> method of the document 
+        object. Using this method simply appends a new string onto the end up the stored cookie rather than overwritting it. To overwrite a cookie, use the 
+        same name but a different value.
+    </p>
+    <p>
+        Cookies are also read using the cookie method, but without setting anything equal to its method. It will then return a list of the cookies. These can 
+        also be split up by reading the key and value pairs through the <i>split()</i> method of the cookie property. By default these cookies expire at the 
+        end of a browser session, but can be made persistent. To fully remove these cookies immediately, simply set the expire date to sometime in the past. 
+    </p>
+    <p>
+        The window object also has two methods for issues callbacks after a set amount of time: the <i>setTimeout()</i> which calls a function after a set time 
+        milliseconds, and the <i>setInterval()</i> which makes the call back every set interval in milliseconds.
+    </p>
+    <h2>HTML5 APIs</h2>
+    <p>
+        The data- attribute is commonly used for storing data within HTML element tags. Within this attribute can be a string with letters, numbers, hyphens, 
+        dots, colons and underscores only. This can be useful for assigning data values to html objects within the DOM in situations where referencing the object 
+        would be convenient, and binding them to a specific object. HTML5 also offers a Web Storage API through the property of <i>local storage</i>. Local storage 
+        is accessed with getter and setter methods, both being passed in name-value pairs. It is possible to clear the local storage with the <i>localstorage.clear()</i> 
+        method. 
+    </p>
+    <p>
+        The Geolocation API is useful for obtaining the current location of the device running the browser. These are returned with the <i>navigator.geolocation.getCurrentPosition()</i>. 
+        This api can also return data such as speed, altitude, and head of the current device (scary, I know). 
+    </p>
+    <p>
+        As we previously learned, Javascript is a single threaded language. But, with the introduction of web workers, we can run intensive tasks in the background. 
+        This is extremely useful when it will take time to process a calcualtion, but you want to avoid the browser from hanging. This can be done by instantiating 
+        a <i>Worker</i> object. Communication is then handled by posting message to and from the worker, essentiall running a secondar program, rather than running 
+        with multiple threads. To kill the worker, the <i>worker.terminate()</i> command can be used from the outside or <i>self.close()</i> for the worker to close itself.
+    </p>
+    <p>
+        Shared Web Workers and Service Workers also exist, albeit more complicated. Shared web workers allow functions to be handed off and run in a separate thread. 
+        Service workers are also interesting in that they can intercept network traffic.
+    </p>
+    <p>
+        The Websocket API allows for more advanced network connections. For example, a typical HTML response is only given after a request is made. What would happen if 
+        the request was missed? This is what makes Websockets fantastic. They leave an open channel for communication running on a temporary server. Websockets are instantiated 
+        objects that are passed in the web address of the socket. This works very similarly to event handlers. It listens for an event and runs when triggered. 
+    </p>
+    <p>
+        The notification API allows for using system notifications! This can be requested with the <i>Notification.requestPermission()</i> function. It will then prompt 
+        the user to allow or deny permission to push notifications to the device. Within a notification object, both the body and icon can be set. These notifications can even 
+        be given event listeners to execute code when click on.
+    </p>
+    <p>
+        Audio and video also have an API through the video or audio element. The <i>coontrols</i> attribute can be added to an element to add default controls such as play, 
+        pause, and adjusting volume. Volume and speed can even be set programmatically, along with reading of the current play time. Many other APIs also exist for accessing 
+        system data, but many are being dropped. With data privacy concerns growing, things like battery life and ambient light, for example, are being dropped support wise.
+    </p>
+</body>
+</html>
