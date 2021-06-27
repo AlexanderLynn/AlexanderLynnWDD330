@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 8 Notes</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            max-width: 1400px;
+        }
+        p { text-indent: 25px; }
+    </style>
+</head>
+<body>
+    <h3>Questions</h3>
+    <ul>
+        <li>What are the pros and cons of both client and server side validation?</li>
+        <li>What are the best use cases for each type of valdiation?</li>
+        <li>Does the <i>fetch()</i> api have a handler for sending login credentials or certificates?</li>
+        <li>How does file upload work with <i>fetch()</i>?</li>
+    </ul>
+    <h2>Client-side Form Validation</h2>
+    <p>
+        Data validation in forms is everywhere on the web. With submitting tickets to a helpdesk that require a valid email,
+        for making sure a password meets the necessary criteria, or that a zipcode is the correct length. With form validation
+        we can make our code more resilient to faulty input; Something users tend to make a lot of.
+    </p>
+    <p>
+        Client-side validation in particular is a great way to improve user experience. Without the noticable delay of sending
+        data to a server to be checked, websites seem snappier and do not need to worry about returning an error to the client. 
+        While this is faster and easy to do with javascript in the client, it shouldn't be used as your primary security measure. 
+        Someone with malicious intent could quickly bypass the client side validation to submit whatever data they would like to 
+        the server. On the back-end the server should have validations and protection for all incoming data.
+    </p>
+    <p>
+        Three main reasons for implementing validation especially in our forms are as follows:
+    </p>
+    <ol>
+        <li>We want to make sure the data is right, in the right format.</li>
+        <li>We want to protect user data.</li>
+        <li>We want to protect ourselves</li>
+    </ol>
+    <p>
+        HTML5 has built in validation for the client for things like required fields, matching regular expressions, and phone/email 
+        formats. While these are fairly useful, Javascript also offers more robust solutions if needed. CSS pseudo-class selectors 
+        are also native to web browsers without scripting.
+    </p>
+    <h3>Common Native HTML5 Validation</h3>
+    <p>
+        HTML5 supports the <i>required</i> attributed within an input tag. This will trigger the <i>:required</i> pseudo-class in CSS. 
+        Native expressions also allow extremely specific validation of character placement, capitalization, and symbols. These are 
+        placed inside of the <i>pattern</i> attribute on the input tag. Minimum and maximum lengths aswell as number ranges for 
+        number inputs are also possible in HTML5.
+    </p>
+    <h3>Javascript Validation</h3>
+    <p>
+        Here is the more complex validation. Javascript has a series of boolean examiner methods that can be called from an html element 
+        reference. These return either true or false on things like <i>maxLength</i>, <i>tooLong</i>, <i>typeMismatch</i> and more. 
+        This is made possible through the Constraint API. An event listener can even be attached to an element with the type <i>input</i> 
+        using the <i>addEventListener</i> method. These Javascript valdiations aren't as responsive as native HTML, but allow for greater 
+        customizability.
+    </p>
+    <h2>Fetch API</h2>
+    <p>
+        The Fetch API built into Javascript helps carry over much of the same functionality as the previous XMLHttpsRequest function. 
+        While other solutions like <i>jQuery.ajax</i> exist, Fetch is native in javascript. Below is a simple example of the Fetch API 
+        in use:
+    </p>
+    <pre><code>
+        fetch('http://example.com/movies.json')
+        .then(response => response.json())
+        .then(data => console.log(data));
+    </code></pre>
+    <p>This code returns a promise containing the responce, usually an object, and then parses the JSON object from it. When making a request, 
+        credentials cam even be included for authentication purposes. This is done by adding in the <i>credentials: include</i> property inside 
+        of the fetch request. Likewise they can be disabled when this property is set to <i>omit</i>. 
+    </p>
+    <p>
+        While usualy thoough of for retrieving data, uploads are also possible with fetch. By including the <i>method: "POST"</i> property in 
+        the fetch call, data can be uploaded to a server via a string. Files can also be sent by appending the file to the formdata being 
+        sent. Each file is attached with a name in a key-value pair.
+    </p>
+    <p>
+        Headers are an extremely value way of setting data to be uploaded or fetched on your page. These are also done with key-value pairs 
+        and provide predefined information that can be gathered from a site. A great usecase for a header is data checking of content 
+        before processing it further. These headers also have several guard properties such as making the responses read-only. 
+    </p>
+    <p>
+        Responces add in great ways to create custom handling for events with fetch. The real meat, however, starts with the body. Inside of 
+        the body of a fetch request can be an array, a blob, string, formData, or a json object which has been stringified.
+    </p>
+</body>
+</html>
