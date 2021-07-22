@@ -37,6 +37,10 @@ const links = [
     {
       label: "Week 10 Notes",
       url: "week10/index.html"
+    },
+    {
+      label: "Weeks 11-14, Final Project. Desk Reservation Software",
+      url: "weeks11-14/Files/index.html"
     }
   ]
 function listPages() {
